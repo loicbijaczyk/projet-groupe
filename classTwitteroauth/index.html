@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+<body>
+<div>
+    <form id="formFollowers" method="post" action='Controller/followerListController.php'>
+        <label for="nameFollower">Nom : </label>
+        <input type="text" id="nameFollower" name="nameFollower" placeholder="nom">
+        <label for="countFollower">Nombre : </label>
+        <input type="text" id="countFollower" name="countFollower">
+        <button id="sendFollowers" type="submit">Récupérer Followers</button>
+    </form>
+</div>
+
+<div>
+    <form id="formDM" method="post" action='Controller/DMController.php'>
+        <div id="Followers">
+            <table id="TableFollowers">
+
+            </table>
+        </div>
+        <input id="screenNameDM" type="text" name="screenNameDM" placeholder="nom">
+        <input id="textDM" type="text" name="textDM" placeholder="Votre message">
+        <button id="sendDM" type="submit">Envoyer DM</button>
+    </form>
+</div>
+<div id="result">
+
+</div>
+<script src="scriptTwitter.js"></script>
+
+</body>
+</html>
