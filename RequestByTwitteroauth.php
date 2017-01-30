@@ -53,32 +53,23 @@ public function connection()
 //        $cursor = '1555408168009512234';
         $cursor = '-1';
         $tab = [];
-        //$tabreturn = [];
-        for ($i = 0; $i < 9; $i++) {
+
+        while ($cursor != 0){
             $followers = $conn->get("followers/list", ["screen_name" => $screenName, "count" => $count, "cursor" => $cursor]);
             $tab[] = $followers;
-//            $tab[$cursor][] = $followers;
             $cursor = $followers->next_cursor_str;
             var_dump($cursor);
-            //}
-//            $tabreturn = $tab[$i]->users;
 
-
-//        var_dump($tab);
-//        var_dump($tab[0]->users);
-//        var_dump($tab[1]->users);
-//            foreach ($tab[$i]->users as $val){
-//                var_dump($val);
-//                foreach ($val->name as $value)
-//                {
-//                    var_dump($value);
-//                }
-//            var_dump($val);
-//            }
-//        var_dump($name);
+            return $tab;
         }
-//        var_dump($tab);
-        return $tab;
+//        for ($i = 0; $i < 6; $i++) {
+//            $followers = $conn->get("followers/list", ["screen_name" => $screenName, "count" => $count, "cursor" => $cursor]);
+//            $tab[] = $followers;
+//            $cursor = $followers->next_cursor_str;
+//            var_dump($cursor);
+//
+//            return $tab;
+//        }
     }
 
     public function getFriendsIds($screenName = 'loicbija')

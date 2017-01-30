@@ -43,6 +43,7 @@ for($i=0 ; $i<8 ; $i++) {
         $followerList->setScreenName($follower->screen_name);
         $followerList->setDescription($follower->description);
         $followerList->setCreatedAt($follower->created_at);
+        $followerList->setLocation($follower->location);
 //
 ////$fl->load([]);
 //
