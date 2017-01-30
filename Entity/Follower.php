@@ -14,6 +14,35 @@ class Follower
     private $screen_name;
     private $description;
     private $created_at;
+    private $location;
+
+    public function __construct($params = [])
+    {
+
+        if (!empty($params)) {
+            foreach ($params as $key => $param) {
+                if ($key == 'follower_id') {
+                    $this->id = (int)$param;
+                }
+                if ($key == 'name') {
+                    $this->name = $param;
+                }
+                if ($key == 'screen_name') {
+                    $this->screen_name = $param;
+                }
+                if ($key == 'description'){
+                    $this->description = $param;
+                }
+                if ($key == 'created_at'){
+                    $this->created_at = $param;
+                }
+                if ($key == 'location'){
+                    $this->location = $param;
+                }
+            }
+        }
+    }
+
 
     /**
      * @return mixed
@@ -93,6 +122,22 @@ class Follower
     public function setCreatedAt($created_at)
     {
         $this->created_at = $created_at;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param mixed $location
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
     }
 
 

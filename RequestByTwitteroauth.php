@@ -41,10 +41,44 @@ public function connection()
         return $conn->get("followers/ids", ['screen_name' => $screenName]);
     }
 
-    public function getFollowersList($screenName = 'loicbija', $count = 5)
+    public function getFollowersLastList($screenName = 'loicbija', $count = 5)
     {
         $conn = $this->connection();
         return $conn->get("followers/list", ['screen_name' => $screenName, 'count' => $count]);
+    }
+
+    public function getFollowersList($screenName = 'AJOfficiel', $count = 200)
+    {
+        $conn = $this->connection();
+//        $cursor = '1555408168009512234';
+        $cursor = '-1';
+        $tab = [];
+        //$tabreturn = [];
+        for ($i = 0; $i < 9; $i++) {
+            $followers = $conn->get("followers/list", ["screen_name" => $screenName, "count" => $count, "cursor" => $cursor]);
+            $tab[] = $followers;
+//            $tab[$cursor][] = $followers;
+            $cursor = $followers->next_cursor_str;
+            var_dump($cursor);
+            //}
+//            $tabreturn = $tab[$i]->users;
+
+
+//        var_dump($tab);
+//        var_dump($tab[0]->users);
+//        var_dump($tab[1]->users);
+//            foreach ($tab[$i]->users as $val){
+//                var_dump($val);
+//                foreach ($val->name as $value)
+//                {
+//                    var_dump($value);
+//                }
+//            var_dump($val);
+//            }
+//        var_dump($name);
+        }
+//        var_dump($tab);
+        return $tab;
     }
 
     public function getFriendsIds($screenName = 'loicbija')
@@ -78,12 +112,12 @@ public function connection()
 //        $cursor = '1555498327033600089';
         $cursor = '-1';
         $tab = [];
-        $tabreturn = [];
+        //$tabreturn = [];
         for ($i = 0; $i < 8; $i++) {
-            $ids = $conn->get("friends/list", ["screen_name" => $screenName, "count" => $count, "cursor" => $cursor]);
-            $tab[] = $ids;
-//            $tab[$cursor][] = $ids;
-            $cursor = $ids->next_cursor_str;
+            $friends = $conn->get("friends/list", ["screen_name" => $screenName, "count" => $count, "cursor" => $cursor]);
+            $tab[] = $friends;
+//            $tab[$cursor][] = $friends;
+            $cursor = $friends->next_cursor_str;
             var_dump($cursor);
             //}
 //            $tabreturn = $tab[$i]->users;
